@@ -3,6 +3,13 @@ angular.module('curates.services', [])
 
   var user = {};
   var loggedIn = false;
+  var initUser = function() {
+    user.givenName = '';
+    user.id = '';
+    user.fullName = '';
+    user.provider = '';
+    loggedIn = false;
+  }
   var login = function(name) {
     console.log(name);
     user.givenName = name;
@@ -11,8 +18,7 @@ angular.module('curates.services', [])
     user.provider = 'test';
   };
   var logout = function() {
-    user = {};
-    loggedIn = false;
+    initUser();
   };
   var validateUser = function(target) {
     return target.provider === user.provider && target.id === user.id
